@@ -34,7 +34,7 @@
     <p>
     <h1>Table of contents:</h1></p>
     <ul>
-        <li><a href="#dataset-examples">Examples</a></li>
+        <li><a href="#dataset-examples">Dataset Examples</a></li>
         <li><a href="#reproducing">Reproducing our results</a>
             <ul>
                 <li><a href="#acquiring-the-audio-tracks">Acquiring the Audio Tracks</a></li>
@@ -49,8 +49,8 @@
         <li><a href="#acknowledgements">Acknowledgements</a></li>
     </ul>
 
-    <h2 id="dataset-examples">Examples</h2>
-    <span>All audio recordings shown here were initially released under non-commercial licenses</span>
+    <h2 id="dataset-examples">Dataset Examples</h2>
+    <p>Here are some examples of recordings in the artificial dataset. All source music recordings shown here were initially released under permissive, non-commercial licenses: see the `database_metadata` key in the JSON for more information.</p>
     <table id="table-examples">
         <tr>
             <th>Track</th>
@@ -266,6 +266,22 @@
             </td>
         </tr>
     </table>
+    <h3>Tracks failing SNR check</h3>
+    <p>Here are examples of several tracks that failed the SNR check and <b>were not</b> included in the artificial dataset as a result:</p>
+    <audio controls>
+        <source src="assets/dataset_below_snr/mtg-jamendo.00039.wav" type="audio/wav">
+    </audio>
+        <audio controls>
+        <source src="assets/dataset_below_snr/mtg-jamendo.00045.wav" type="audio/wav">
+    </audio>
+        <audio controls>
+        <source src="assets/dataset_below_snr/mtg-jamendo.00076.wav" type="audio/wav">
+    </audio>
+        <audio controls>
+        <source src="assets/dataset_below_snr/mtg-jamendo.00083.wav" type="audio/wav">
+    </audio>
+
+
 
     <h2 id="reproducing">Reproducing</h2>
     <p>First things first, clone the repository to a new directory, and install the requirements:</p>
