@@ -1,0 +1,62 @@
+{
+  "dataset": "fma",
+  "file": "fma.00215.wav",
+  "window_start": 22.5,
+  "window_stop": 30.0,
+  "anchor_crop_start": 24.06123155088978,
+  "anchor_crop_end": 29.06123155088978,
+  "sample_crop_start": 24.717820909547186,
+  "sample_crop_end": 29.717820909547186,
+  "sample_instr": [
+    "bass+other",
+    "drums"
+  ],
+  "nonsample_instr": [
+    "vocals"
+  ],
+  "sample_fx": [
+    {
+      "name": "mp3",
+      "params": {
+        "vbr_quality": 4.62098988714925
+      }
+    },
+    {
+      "name": "gain",
+      "params": {
+        "gain_db": 1.9535089102864784
+      }
+    }
+  ],
+  "mix_fx": [
+    {
+      "name": "pitchshift",
+      "params": {
+        "semitones": 1.0
+      }
+    },
+    {
+      "name": "timewarpduplicate",
+      "params": {
+        "fps": 2.410698694178187,
+        "seed": 3404366331
+      }
+    },
+    {
+      "name": "timewarpreverse",
+      "params": {
+        "fps": 2.1608122548531847,
+        "seed": 429073669
+      }
+    }
+  ],
+  "database_metadata": {
+    "track_name": "Team USA (prod. Just Blaze)",
+    "track_artist": "6th Sense &amp; Mick Boogie",
+    "track_album": "Just Do It: A Mixtape Ode To Nike",
+    "track_date": null,
+    "track_license": "Attribution-Noncommercial-Share Alike 3.0 United States",
+    "track_publisher": null,
+    "track_url": "http://freemusicarchive.org/music/6th_Sense_amp_Mick_Boogie/Just_Do_It_A_Mixtape_Ode_To_Nike/Team_USA_prod_Just_Blaze"
+  }
+}

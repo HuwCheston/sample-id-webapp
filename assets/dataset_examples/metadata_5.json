@@ -1,0 +1,56 @@
+{
+  "dataset": "fma",
+  "file": "fma.00083.wav",
+  "window_start": 0.0,
+  "window_stop": 7.5,
+  "anchor_crop_start": 1.1617594347573832,
+  "anchor_crop_end": 6.161759434757383,
+  "sample_crop_start": 0.4303444007153137,
+  "sample_crop_end": 5.430344400715314,
+  "sample_instr": [
+    "bass+other"
+  ],
+  "nonsample_instr": [
+    "vocals",
+    "drums"
+  ],
+  "sample_fx": [],
+  "mix_fx": [
+    {
+      "name": "timewarpduplicate",
+      "params": {
+        "fps": 4.69855890339708,
+        "seed": 4000569496
+      }
+    },
+    {
+      "name": "timewarpremove",
+      "params": {
+        "fps": 1.9167744852502206,
+        "seed": 3927268263
+      }
+    },
+    {
+      "name": "timewarpreverse",
+      "params": {
+        "fps": 1.6696887197123407,
+        "seed": 72864910
+      }
+    },
+    {
+      "random_dataset": "fma",
+      "random_file": "fma.01312.wav",
+      "random_crop_start": 0.9517172478265085,
+      "random_crop_end": 5.951717247826508
+    }
+  ],
+  "database_metadata": {
+    "track_name": "Life of Luxury(Backroom Mix)",
+    "track_artist": "Sunbyrn",
+    "track_album": "ccMixter [Sunbyrn]",
+    "track_date": "2006-01-01 00:00:00",
+    "track_license": "Attribution-Noncommercial 3.0 United States",
+    "track_publisher": null,
+    "track_url": "http://freemusicarchive.org/music/Sunbyrn/ccMixter_Sunbyrn/Life_of_LuxuryBackroom_Mix"
+  }
+}

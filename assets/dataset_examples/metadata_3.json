@@ -1,0 +1,41 @@
+{
+  "dataset": "mtg-jamendo",
+  "file": "mtg-jamendo.00141.wav",
+  "window_start": 15.0,
+  "window_stop": 22.5,
+  "anchor_crop_start": 15.302983100608138,
+  "anchor_crop_end": 20.302983100608138,
+  "sample_crop_start": 16.105178389564248,
+  "sample_crop_end": 21.105178389564248,
+  "sample_instr": [
+    "drums"
+  ],
+  "nonsample_instr": [
+    "vocals",
+    "bass+other"
+  ],
+  "sample_fx": [
+    {
+      "name": "distortion",
+      "params": {
+        "drive_db": 16.606671596879927
+      }
+    },
+    {
+      "name": "highpassfilter",
+      "params": {
+        "freq": 988.3827641023208
+      }
+    }
+  ],
+  "mix_fx": [],
+  "database_metadata": {
+    "track_name": "Amor_Sem_Origem_",
+    "track_artist": "diego Noar",
+    "track_album": "Um lado vasto",
+    "track_date": "2016-03-15",
+    "track_license": "Creative Commons Attribution-Non-Commercial-Share-Alike ",
+    "track_publisher": null,
+    "track_url": "http://www.jamendo.com/track/1327739"
+  }
+}

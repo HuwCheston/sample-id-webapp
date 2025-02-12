@@ -1,0 +1,37 @@
+{
+  "dataset": "fma",
+  "file": "fma.00174.wav",
+  "window_start": 20.0,
+  "window_stop": 27.5,
+  "anchor_crop_start": 21.708985825645883,
+  "anchor_crop_end": 26.708985825645883,
+  "sample_crop_start": 21.401681002324338,
+  "sample_crop_end": 26.401681002324338,
+  "sample_instr": [
+    "drums"
+  ],
+  "nonsample_instr": [
+    "vocals",
+    "bass+other"
+  ],
+  "sample_fx": [
+    {
+      "name": "delay",
+      "params": {
+        "delay_seconds": 0.7900652945945035,
+        "feedback": 0.6180268486798672,
+        "mix": 0.26358283718888503
+      }
+    }
+  ],
+  "mix_fx": [],
+  "database_metadata": {
+    "track_name": "What You Talkin Bout",
+    "track_artist": "It's Notherground Music!!",
+    "track_album": "It's Notherground Music!!",
+    "track_date": null,
+    "track_license": "Attribution-Noncommercial-Share Alike 3.0 United States",
+    "track_publisher": null,
+    "track_url": "http://freemusicarchive.org/music/Its_Notherground_Music/Its_Notherground_Music/What_You_Talkin_Bout"
+  }
+}

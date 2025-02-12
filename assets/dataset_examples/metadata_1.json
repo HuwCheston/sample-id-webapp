@@ -1,0 +1,28 @@
+{
+  "dataset": "fma",
+  "file": "fma.00406.wav",
+  "window_start": 2.5,
+  "window_stop": 10.0,
+  "anchor_crop_start": 4.121598796669875,
+  "anchor_crop_end": 9.121598796669875,
+  "sample_crop_start": 3.190005766103103,
+  "sample_crop_end": 8.190005766103102,
+  "sample_instr": [
+    "drums"
+  ],
+  "nonsample_instr": [
+    "vocals",
+    "bass+other"
+  ],
+  "sample_fx": [],
+  "mix_fx": [],
+  "database_metadata": {
+    "track_name": "The Minimum feat. Tiara Wiles {prod. 6th Sense}",
+    "track_artist": "The Kid Daytona",
+    "track_album": "Come Fly With Me",
+    "track_date": null,
+    "track_license": "Attribution-Noncommercial-Share Alike 3.0 United States",
+    "track_publisher": null,
+    "track_url": "http://freemusicarchive.org/music/The_Kid_Daytona/Come_Fly_With_Me/The_Minimum_feat_Tiara_Wiles_prod_6th_Sense"
+  }
+}

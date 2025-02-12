@@ -1,0 +1,70 @@
+{
+  "dataset": "fma",
+  "file": "fma.01200.wav",
+  "window_start": 2.5,
+  "window_stop": 10.0,
+  "anchor_crop_start": 4.926308590300624,
+  "anchor_crop_end": 9.926308590300625,
+  "sample_crop_start": 2.5404634720648143,
+  "sample_crop_end": 7.540463472064815,
+  "sample_instr": [
+    "vocals",
+    "bass+other"
+  ],
+  "nonsample_instr": [
+    "drums"
+  ],
+  "sample_fx": [
+    {
+      "name": "filter",
+      "params": {
+        "n_bands": 5,
+        "gains": [
+          -19.848168289537945,
+          -18.94241905887376,
+          -15.027161056821289,
+          -16.854115575013783,
+          -19.032255695571145
+        ],
+        "freqs": [
+          6344.237593925576,
+          2361.2595280811925,
+          1527.0465997204735,
+          6250.210575448341,
+          4465.340118830623
+        ],
+        "qs": [
+          0.6965060259079158,
+          0.7699716276878024,
+          0.7147587038985576,
+          0.6459781658651743,
+          0.6264029161301122
+        ]
+      }
+    },
+    {
+      "name": "highpassfilter",
+      "params": {
+        "freq": 460.6213110938528
+      }
+    },
+    {
+      "name": "delay",
+      "params": {
+        "delay_seconds": 0.07299475212718035,
+        "feedback": 0.2288377660550054,
+        "mix": 0.305308180568912
+      }
+    }
+  ],
+  "mix_fx": [],
+  "database_metadata": {
+    "track_name": "Remember The Good Times- Plan B-Eye, YVP, CAPITAL, Big Marsh, DJ Blanco",
+    "track_artist": "ZuKrewe",
+    "track_album": "Enter The Zu",
+    "track_date": null,
+    "track_license": "Attribution-Noncommercial-Share Alike 3.0 United States",
+    "track_publisher": null,
+    "track_url": "http://freemusicarchive.org/music/ZuKrewe/none_given_1546/Remember_the_good_times_8_4_eq_3"
+  }
+}

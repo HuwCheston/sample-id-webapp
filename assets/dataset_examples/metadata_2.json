@@ -1,0 +1,49 @@
+{
+  "dataset": "fma",
+  "file": "fma.01798.wav",
+  "window_start": 15.0,
+  "window_stop": 22.5,
+  "anchor_crop_start": 15.645452023074585,
+  "anchor_crop_end": 20.645452023074583,
+  "sample_crop_start": 16.412489434426917,
+  "sample_crop_end": 21.412489434426917,
+  "sample_instr": [
+    "bass+other",
+    "drums"
+  ],
+  "nonsample_instr": [
+    "vocals"
+  ],
+  "sample_fx": [
+    {
+      "name": "gain",
+      "params": {
+        "gain_db": -4.57243507641115
+      }
+    }
+  ],
+  "mix_fx": [
+    {
+      "name": "timewarpreverse",
+      "params": {
+        "fps": 2.562016604979895,
+        "seed": 2162708296
+      }
+    },
+    {
+      "name": "timeshift",
+      "params": {
+        "shift": 1.0115921436709876
+      }
+    }
+  ],
+  "database_metadata": {
+    "track_name": "Cascos",
+    "track_artist": "Stray",
+    "track_album": "O Diabo",
+    "track_date": null,
+    "track_license": "Attribution-NonCommercial-ShareAlike",
+    "track_publisher": null,
+    "track_url": "http://freemusicarchive.org/music/Stray/O_Diabo/Stray_-_O_Diabo_-_07_Cascos"
+  }
+}

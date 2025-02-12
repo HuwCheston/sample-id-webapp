@@ -1,0 +1,57 @@
+{
+  "dataset": "fma",
+  "file": "fma.03055.wav",
+  "window_start": 5.0,
+  "window_stop": 12.5,
+  "anchor_crop_start": 7.328948994172483,
+  "anchor_crop_end": 12.328948994172482,
+  "sample_crop_start": 6.810254938444094,
+  "sample_crop_end": 11.810254938444093,
+  "sample_instr": [
+    "bass+other"
+  ],
+  "nonsample_instr": [
+    "vocals",
+    "drums"
+  ],
+  "sample_fx": [
+    {
+      "name": "distortion",
+      "params": {
+        "drive_db": 14.02933543591865
+      }
+    }
+  ],
+  "mix_fx": [
+    {
+      "name": "timewarpreverse",
+      "params": {
+        "fps": 3.824809495089932,
+        "seed": 1491792325
+      }
+    },
+    {
+      "name": "timewarpduplicate",
+      "params": {
+        "fps": 0.5107949417081185,
+        "seed": 1954105459
+      }
+    },
+    {
+      "name": "timewarpremove",
+      "params": {
+        "fps": 3.309633465338329,
+        "seed": 2492484575
+      }
+    }
+  ],
+  "database_metadata": {
+    "track_name": "Cawper Crow",
+    "track_artist": "Pot-C",
+    "track_album": "Baldest N Fattest XE",
+    "track_date": null,
+    "track_license": "Attribution-NonCommercial-ShareAlike",
+    "track_publisher": null,
+    "track_url": "http://freemusicarchive.org/music/Pot-C/Baldest_N_Fattest_XE/09_-_Cawper_Crow"
+  }
+}

@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        h1 {
+            font-family: Verdana;
+        }
+
+        h2 {
+            font-family: Verdana;
+            margin-top: 50px
+        }
+        span {
+            font-family: Verdana;
+        }
+
+        #panes {
+            width: 100%;
+            margin: auto;
+        }
+
+        #headerContainer {
+            float: left;
+            margin: auto
+        }
+
+        #queryContainer {
+            float: left;
+            margin-right: 10px
+        }
+
+        #candidateContainer {
+            float: left;
+            margin-left: 10px
+        }
+
+        .space {
+            margin-top: 200px;
+        }
+
+        .buttons {
+            width: 200px;
+            margin: 0 auto;
+            display: inline;
+        }
+
+        .action_btn {
+            width: 200px;
+            margin: 0 auto;
+            display: inline;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <title>Sample Explorer</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script charset="utf-8" src="https://cdn.plot.ly/plotly-2.34.0.min.js"></script>
+    <script>
+        function includeHTML(path) {
+            var file = 'views/' + path.split(',')[0] + '.html'
+            $('#headerContainer').load(file)
+        }
+
+        function createYouTubeFrame(VIDEO_ID, start, autoplay) {
+            if (autoplay) {
+                let src = 'https://www.youtube.com/embed/' + VIDEO_ID + '?autoplay=1&color=white&start=' + start
+                return '<iframe sandbox="allow-same-origin allow-scripts allow-popups allow-forms" allow="autoplay" style="z-index: 1000; color: white;" id="ytplayer" type="text/html" width="280" height="160" ' + 'src=' + src + '>'
+            } else {
+                let src = 'https://www.youtube.com/embed/' + VIDEO_ID + '?autoplay=0&color=white&start=' + start
+                return '<iframe sandbox="allow-same-origin allow-scripts allow-popups allow-forms" style="z-index: 1000; color: white;" id="ytplayer" type="text/html" width="280" height="160" ' + 'src=' + src + '>'
+            }
+        }
+
+        function startYouTubeFrame(autoplay_query, autoplay_candidate) {
+            let select_form = document.getElementById("selector")
+            loadYouTubeVideo(select_form.value, autoplay_query, autoplay_candidate)
+        }
+
+        function loadYouTubeVideo(values, autoplay_query = false, autoplay_candidate = false) {
+            let q_url = values.split(',')[1]
+            let c_url = values.split(',')[2]
+            let q_start = values.split(',')[3]
+            let c_start = values.split(',')[4]
+            let q_pane = document.getElementById("queryVideoContainer",)
+            q_pane.innerHTML = createYouTubeFrame(q_url, q_start, autoplay_query)
+            let c_pane = document.getElementById("candidateVideoContainer")
+            c_pane.innerHTML = createYouTubeFrame(c_url, c_start, autoplay_candidate)
+        }
+
+        function updateView(values) {
+            includeHTML(values)
+            loadYouTubeVideo(values)
+        }
+
+    </script>
+</head>
+<body>
+<div id="panes" class="panes">
+    <h1>🤖📀Sample Explorer v2🤖📀</h1>
+    <text style="font-family:Verdana">🤖 = model predicted sample location, 📀 = actual location</text>
+    <h2>Select a track:</h2>
+    <div class="custom-select" style="width:200px;">
+        <form action="#">
+            <select id="selector" onchange="updateView(this.value)">
+                <optgroup label="3rd Bass - Oval Office (T172)" data-max-options="1">
+                    <option value="T172_T173,JcIbgLQ11y8,c2-OIpeMooU,185,12">Joe Quarterman & Free Soul - I'm Gonna Get
+                        You (T173)
+                    </option>
+                <optgroup label="A Tribe Called Quest - Can I Kick It? (T016)" data-max-options="1">
+                    <option value="T016_T015,D-uV8TGjaGU,oG6fayQBm9w,112,7">Lou Reed - Walk On The Wild Side (T015)
+                    </option>
+                <optgroup label="A Tribe Called Quest - Jazz (we've Got) (T099)" data-max-options="1">
+                    <option value="T099_T098,DvzOfm0ZhS8,o4TIkfodx04,152,2">Five Stairsteps - Don't Change Your Love
+                        (T098)
+                    </option>
+                <optgroup
+                        label="A Tribe Called Quest Ft. Leaders Of The New School & Kid Hood - Scenario (remix) (T032)"
+                        data-max-options="1">
+                    <option value="T032_T033,ER2AT-mdB10,05q2-wFl_14,180,145">The Emotions - Blind Alley (T033)</option>
+                <optgroup label="Asheru Ft. Talib Kweli - Mood Swing (T022)" data-max-options="1">
+                    <option value="T022_T023,7xk0eGIU0Ys,sCQfTNOC5aE,275,52">Duke Ellington And John Coltrane - In A
+                        Sentimental Mood (T023)
+                    </option>
+                <optgroup label="Beastie Boys - Brass Monkey (T179)" data-max-options="1">
+                    <option value="T179_T180,acY2VSskD80,M7II1SB6TAI,5,2">Wild Sugar - Bring It Here (T180)</option>
+                <optgroup label="Beastie Boys - Egg Man (T176)" data-max-options="1">
+                    <option value="T176_T177,5x5NCDYB1Lc,vTWZ2e0sLaQ,5,2">Curtis Mayfield - Superfly (T177)</option>
+                <optgroup label="Beastie Boys - Rhymin & Stealin' (T009)" data-max-options="1">
+                    <option value="T009_T010,E4m_M0JwGLI,JM3fodiK9rY,0,2">Led Zeppelin - When The Levee Breaks (T010)
+                    </option>
+                <optgroup label="Beastie Boys - Rock Hard (T026)" data-max-options="1">
+                    <option value="T026_T027,dsVAOjVYQnY,pAgnJDJN4VA,222,232">Ac/dc - Back In Black (T027)</option>
+                <optgroup label="Beastie Boys - Time To Get Ill (T144)" data-max-options="1">
+                    <option value="T144_T145,77D7DF4Gpo0,x6AL1XnHJZs,212,2">Barry White - I'm Gonna Love You Just A
+                        Little More Baby (T145)
+                    </option>
+                <optgroup label="Big Daddy Kane - Ain't No Half-steppin' (T036)" data-max-options="1">
+                    <option value="T036_T033,kfH2JqiRy-8,05q2-wFl_14,280,90">The Emotions - Blind Alley (T033)</option>
+                <optgroup label="Biz Markie - Just A Friend (T039)" data-max-options="2">
+                    <option value="T039_T040,JwI1-aAyvMk,i8HnQX2f158,62,30">Freddie Scott - You Got What I Need (T040)
+                    </option>
+                    <option value="T039_T052,JwI1-aAyvMk,uxp0Kfgpft8,147,145">Lee Dorsey - Get Out Of My Life, Woman
+                        (T052)
+                    </option>
+                <optgroup label="Black Rob - Whoa! (T077)" data-max-options="1">
+                    <option value="T077_T076,EC5LzftfcjI,GkBNH6ANnxQ,0,2">Raymond Lefevre & His Orchestra - The Days Of
+                        Pearly Spencer (T076)
+                    </option>
+                <optgroup label="Blackstreet - No Diggity (T012)" data-max-options="1">
+                    <option value="T012_T011,3KL9mRus19o,TdrChyGb574,2,2">Bill Withers - Grandma's Hands (T011)</option>
+                <optgroup label="Capone N' Noreaga - Invincible (T075)" data-max-options="1">
+                    <option value="T075_T074,hLCGcj7dVc0,CxujnujMUz0,177,20">Jimmie & Vella Cameron - Hey Boy Over There
+                        (T074)
+                    </option>
+                <optgroup label="Common - In My Own World (check The Method) (T006)" data-max-options="1">
+                    <option value="T006_T005,_0aP1wjOt7E,3ofnKqgTdSk,32,20">Clyde Mcphatter - Mixed Up Cup (T005)
+                    </option>
+                <optgroup label="Common - The Light (T061)" data-max-options="1">
+                    <option value="T061_T060,OjHX7jf-znA,ynHe65PEWiQ,192,110">Bobby Caldwell - Open Your Eyes (T060)
+                    </option>
+                <optgroup label="Cormega - American Beauty (T102)" data-max-options="1">
+                    <option value="T102_T101,6HVf0GWAGck,2ySC-_jIzJ0,112,5">Southside Movement - I Been Watchin' You
+                        (T101)
+                    </option>
+                <optgroup label="Crucial Conflict - Showdown (T178)" data-max-options="1">
+                    <option value="T178_T177,VdNmOCF_mMc,vTWZ2e0sLaQ,92,12">Curtis Mayfield - Superfly (T177)</option>
+                <optgroup label="Cypress Hill - Real Estate (T150)" data-max-options="1">
+                    <option value="T150_T151,DfW69PKpsPI,iL70Xw-FteU,2,132">All The People - Cramp Your Style (T151)
+                    </option>
+                <optgroup label="Dj Qbert - Eight (T109)" data-max-options="1">
+                    <option value="T109_T108,_K_pWBvNl7I,6HbIGk6zH_k,105,10">Gary Numan - Films (T108)</option>
+                <optgroup label="De La Soul - Change In Speak (T048)" data-max-options="3">
+                    <option value="T048_T049,PXI8YSFjm3U,w52aFwIVldA,45,2">Cymande - Bra (T049)</option>
+                    <option value="T048_T050,PXI8YSFjm3U,X8IoN5rrcgo,107,2">The Mad Lads - No Strings Attached (T050)
+                    </option>
+                    <option value="T048_T082,PXI8YSFjm3U,p6jVxks8M4A,0,105">The Monkeys - Mary Mary (T082)</option>
+                <optgroup label="De La Soul - De La Orgee (T146)" data-max-options="1">
+                    <option value="T146_T145,XKeYFvaJ5Cs,x6AL1XnHJZs,0,2">Barry White - I'm Gonna Love You Just A Little
+                        More Baby (T145)
+                    </option>
+                <optgroup label="De La Soul - Eye Know (T037)" data-max-options="3">
+                    <option value="T037_T052,q9jCsOCfUUg,uxp0Kfgpft8,0,100">Lee Dorsey - Get Out Of My Life, Woman
+                        (T052)
+                    </option>
+                    <option value="T037_T043,q9jCsOCfUUg,rTVjnBo96Ug,245,160">Otis Redding - (sittin' On) The Dock Of
+                        The Bay (T043)
+                    </option>
+                    <option value="T037_T038,q9jCsOCfUUg,L8BP6AHGcfs,0,2">The Mad Lads - Make This Young Lady Mine
+                        (T038)
+                    </option>
+                <optgroup label="Dr. Dre Ft. Snoop Dogg - The Next Episode (T059)" data-max-options="1">
+                    <option value="T059_T058,QZXc39hT8t4,G9jHiifI74Q,75,25">David Mccallum - The Edge (T058)</option>
+                <optgroup label="Epmd - Jane (T164)" data-max-options="1">
+                    <option value="T164_T162,plC2z9g3aVQ,IOsp2sBtDqQ,165,2">Joe Tex - Papa Was Too (T162)</option>
+                <optgroup label="Eminem - Stan (T063)" data-max-options="1">
+                    <option value="T063_T062,kt14c7sYTFA,fQWNeIiFf_s,7,22">Dido - Thank You (T062)</option>
+                <optgroup label="Erik B. & Rakim - I Know You Got Soul (T187)" data-max-options="2">
+                    <option value="T187_T160,fvAAETHrXv0,OeZCYGT7GWw,267,10">Bobby Byrd - I Know You Got Soul (T160)
+                    </option>
+                    <option value="T187_T088,fvAAETHrXv0,rAnHQiIwkf0,2,5">Funkadelic - You'll Like It Too (T088)
+                    </option>
+                <optgroup label="Erik B. & Rakim - Lyrics Of Fury (T190)" data-max-options="1">
+                    <option value="T190_T083,sulaqzO0ICk,AoQ4AtsFWVM,2,325">James Brown - Funky Drummer (T083)</option>
+                <optgroup label="Fat Joe - Flow Joe (T053)" data-max-options="1">
+                    <option value="T053_T052,kVdDlb_6UIU,uxp0Kfgpft8,162,17">Lee Dorsey - Get Out Of My Life, Woman
+                        (T052)
+                    </option>
+                <optgroup label="Geto Boys - Fuck A War (T157)" data-max-options="2">
+                    <option value="T157_T160,0chVPkuMZo4,OeZCYGT7GWw,185,10">Bobby Byrd - I Know You Got Soul (T160)
+                    </option>
+                    <option value="T157_T154,0chVPkuMZo4,M5h6VQySaaw,2,2">Sound Experience - Devil With The Bust
+                        (T154)
+                    </option>
+                <optgroup label="Ghostface Killah & Rza - Nutmeg (T065)" data-max-options="1">
+                    <option value="T065_T064,GjqLUx7jxWU,RXKrT88mwXE,102,115">Eddie Holman - It's Over (T064)</option>
+                <optgroup label="Ghostface Killah & Rza - The Grain (T110)" data-max-options="2">
+                    <option value="T110_T111,XC9WfhRep64,Lns0t8LInRA,40,70">Rufus Thomas - Do The Funky Penguin (T111)
+                    </option>
+                    <option value="T110_T112,XC9WfhRep64,R_xJHZw0m74,105,107">Rufus Thomas - The Breakdown (part 2)
+                        (T112)
+                    </option>
+                <optgroup label="Ghostface Killah & Raekwon - Apollo Kids (T081)" data-max-options="1">
+                    <option value="T081_T080,D2m6Ghnxf8I,T6GH3QKR0gw,10,7">Solomon Burke - Cool Breeze (T080)</option>
+                <optgroup label="House Of Pain - Jump Around (T017)" data-max-options="1">
+                    <option value="T017_T018,NjW0HpECyAo,6bZyk5mixXk,0,2">Bob & Earl - Harlem Shuffle (T018)</option>
+                <optgroup label="Ice Cube - A Bird In The Hand (T100)" data-max-options="1">
+                    <option value="T100_T098,QQU8lazOsKc,o4TIkfodx04,12,147">Five Stairsteps - Don't Change Your Love
+                        (T098)
+                    </option>
+                <optgroup label="Jay-z & Ukg - Big Pimpin' (T071)" data-max-options="1">
+                    <option value="T071_T070,Cgoqrgc_0cM,95SL6anzW90,10,45">Hossam Ramzy - Khusara Khusara (T070)
+                    </option>
+                <optgroup label="Jay-z - Roc Boys (and The Winner Is) (T013)" data-max-options="1">
+                    <option value="T013_T014,WILsR0wJY5M,iV93hXBZinw,0,72">Menahan Street Band - Make The Road By
+                        Walking (T014)
+                    </option>
+                <optgroup label="Jay-z - Show Me What You Got (T149)" data-max-options="1">
+                    <option value="T149_T148,xB79qCQ8ykk,ND8t0rOCLGI,12,110">Johnny Pate - Shaft In Africa (T148)
+                    </option>
+                <optgroup label="Jay-z Ft. Alicia Keys - Empire State Of Mind (T084)" data-max-options="1">
+                    <option value="T084_T085,vk6014HuxcE,1G2QKOAHjJs,0,7">Isaac Hayes - The Breakthrough (T085)</option>
+                <optgroup label="Jurassic 5 - Quality Control (T057)" data-max-options="1">
+                    <option value="T057_T056,PgpDN-bARwc,CRoJFbSVqnU,7,55">Blowfly - Outro (T056)</option>
+                <optgroup label="Kanye West Ft. Nas, Really Doe - We Major (T118)" data-max-options="1">
+                    <option value="T118_T119,ViuIFqJGmdE,fGyTxXfV4FQ,0,297">Orange Krush - Action (T119)</option>
+                <optgroup label="Killah Priest Ft. Hell Razah And Tekitha - One Step (T041)" data-max-options="1">
+                    <option value="T041_T042,7AHzkg7yxww,jAv_P2Z-5LU,187,110">William Bell - I Forgot To Be Your Lover
+                        (T042)
+                    </option>
+                <optgroup label="Kris Kross - Jump (T093)" data-max-options="3">
+                    <option value="T093_T094,010KyIQjkTk,y2bVIBwpCTA,82,32">Jackson 5 - I Want You Back (T094)</option>
+                    <option value="T093_T095,010KyIQjkTk,bSIb4T5vu9E,85,132">Ohio Players - Funky Worm (T095)</option>
+                    <option value="T093_T090,010KyIQjkTk,wqbEsS5kFb8,155,42">The Honey Drippers - Impeach The President
+                        (T090)
+                    </option>
+                <optgroup label="Ll Cool J - Around The Way Girl (T092)" data-max-options="1">
+                    <option value="T092_T090,Fwgt9Dxyyv0,wqbEsS5kFb8,175,170">The Honey Drippers - Impeach The President
+                        (T090)
+                    </option>
+                <optgroup label="Ll Cool J - Breakthrough (T121)" data-max-options="1">
+                    <option value="T121_T085,4o1S83VC0nA,1G2QKOAHjJs,2,5">Isaac Hayes - The Breakthrough (T085)</option>
+                <optgroup label="Ll Cool J - Mama Said Knock You Out (T191)" data-max-options="1">
+                    <option value="T191_T083,vimZj8HW0Kg,AoQ4AtsFWVM,7,390">James Brown - Funky Drummer (T083)</option>
+                <optgroup label="Lil Wayne - Dr. Carter (T004)" data-max-options="1">
+                    <option value="T004_T003,5iqUUJqF4M4,8j8pSu3U7WM,77,5">David Axelrod - Holy Thursday (T003)</option>
+                <optgroup label="M.o.p. - Ante Up (T079)" data-max-options="1">
+                    <option value="T079_T078,jNiJrqKLajk,rB8VY1mD520,237,5">Sam & Dave - Soul Sister, Brown Sugar
+                        (T078)
+                    </option>
+                <optgroup label="M.o.p. - Cold As Ice (T067)" data-max-options="1">
+                    <option value="T067_T066,9270o2_vQg0,aP8Rbct_50Y,5,120">Foreigner - Cold As Ice (T066)</option>
+                <optgroup label="Nwa - Fuck The Police (T189)" data-max-options="1">
+                    <option value="T189_T083,qZuxPKUVGiw,AoQ4AtsFWVM,132,330">James Brown - Funky Drummer (T083)
+                    </option>
+                <optgroup label="Nwa - Straight Outta Compton (T086)" data-max-options="2">
+                    <option value="T086_T088,TMZi25Pq3T8,rAnHQiIwkf0,252,265">Funkadelic - You'll Like It Too (T088)
+                    </option>
+                    <option value="T086_T116,TMZi25Pq3T8,GxZuq57_bYM,235,90">The Winstons - Amen, Brother (T116)
+                    </option>
+                <optgroup label="Nas - Get Down (T184)" data-max-options="3">
+                    <option value="T184_T083,bWp2yY966BA,AoQ4AtsFWVM,142,332">James Brown - Funky Drummer (T083)
+                    </option>
+                    <option value="T184_T199,bWp2yY966BA,jC2ZY2loo74,0,70">James Brown - The Boss (T199)</option>
+                    <option value="T184_T185,bWp2yY966BA,ILrvgPkFuXI,7,25">The Blackbyrds - Rock Creek Park (T185)
+                    </option>
+                <optgroup label="Nas - Memory Lane (sittin' In Da Park) (T051)" data-max-options="1">
+                    <option value="T051_T052,9KVuxllwGqE,uxp0Kfgpft8,240,22">Lee Dorsey - Get Out Of My Life, Woman
+                        (T052)
+                    </option>
+                <optgroup label="Nas - One Mic (T152)" data-max-options="1">
+                    <option value="T152_T145,JCOURZ-yx4E,x6AL1XnHJZs,190,355">Barry White - I'm Gonna Love You Just A
+                        Little More Baby (T145)
+                    </option>
+                <optgroup label="Naughty By Nature - Hip Hop Hurray (T097)" data-max-options="1">
+                    <option value="T097_T098,Rz1Xn1vzOM4,o4TIkfodx04,217,5">Five Stairsteps - Don't Change Your Love
+                        (T098)
+                    </option>
+                <optgroup label="Nice & Smooth - Funky For You (T091)" data-max-options="1">
+                    <option value="T091_T090,mPRwnF4wJUc,wqbEsS5kFb8,2,2">The Honey Drippers - Impeach The President
+                        (T090)
+                    </option>
+                <optgroup label="Nikki D - Lettin' Off Steam (T166)" data-max-options="1">
+                    <option value="T166_T167,nBse4tXDaLU,lEFvX9gcezM,250,7">The Politicians - Free Your Mind (T167)
+                    </option>
+                <optgroup label="Non Phixion - Rock Stars (T030)" data-max-options="1">
+                    <option value="T030_T031,zcttfU4vUWY,AG38vBvNmcA,227,47">Bar-kays - In The Hole (T031)</option>
+                <optgroup label="Oc - Time's Up (T001)" data-max-options="1">
+                    <option value="T001_T002,6gNmCGQRpcc,DkQFAxSwwjk,200,5">Les Demerle - A Day In The Life (T002)
+                    </option>
+                <optgroup label="Pete Rock & C.l. Smooth - Straighten It Out (T034)" data-max-options="1">
+                    <option value="T034_T035,xhDb8LoScpI,bH5AiZPSNbc,215,40">Ernie Hines - Our Generation (T035)
+                    </option>
+                <optgroup label="Prodigy - Keep It Thoro (T073)" data-max-options="1">
+                    <option value="T073_T072,fLlE48B68wk,mQRez3tmFC8,150,5">Jack Mayborn - Music People (T072)</option>
+                <optgroup label="Public Enemy - 911 Is A Joke (T153)" data-max-options="1">
+                    <option value="T153_T154,MwNhwwcQ4Ow,M5h6VQySaaw,190,5">Sound Experience - Devil With The Bust
+                        (T154)
+                    </option>
+                <optgroup label="Public Enemy - Rebel Without A Pause (T054)" data-max-options="2">
+                    <option value="T054_T083,-fN5RX15Zhw,AoQ4AtsFWVM,285,330">James Brown - Funky Drummer (T083)
+                    </option>
+                    <option value="T054_T045,-fN5RX15Zhw,wIhWa3YtyA0,7,20">The J.b.'s - The Grunt (T045)</option>
+                <optgroup label="Public Enemy - Welcome To The Terrordome (T192)" data-max-options="1">
+                    <option value="T192_T193,e4Zey7o04Qk,y_moB85G7xI,252,122">Dyke & The Blazers - Let A Woman Be A
+                        Woman, Let A Man Be A Man (T193)
+                    </option>
+                <optgroup label="Ras Kass - Rasassination (T147)" data-max-options="1">
+                    <option value="T147_T148,W3tdXkMdQJ8,ND8t0rOCLGI,22,110">Johnny Pate - Shaft In Africa (T148)
+                    </option>
+                <optgroup label="Salt-n-pepa - I Desire (T115)" data-max-options="2">
+                    <option value="T115_T117,oJ3yleK136k,-eK0nuBEtf0,230,275">7th Wonder - Daisy Lady (T117)</option>
+                    <option value="T115_T116,oJ3yleK136k,GxZuq57_bYM,147,127">The Winstons - Amen, Brother (T116)
+                    </option>
+                <optgroup label="Shyne & Barrington Levy - Bad Boyz (T069)" data-max-options="1">
+                    <option value="T069_T068,lmFPTqexVzE,grJiFTEGWAg,217,20">Grace Jones - Nightclubbing (T068)</option>
+                <optgroup label="The Avalanches - Since I Left You (T103)" data-max-options="1">
+                    <option value="T103_T104,4xT1005h38o,cB7XSUtfe20,97,27">Lamont Dozier - Take Off Your Make Up
+                        (T104)
+                    </option>
+                <optgroup label="The Beatnuts - Let Off A Couple (T008)" data-max-options="1">
+                    <option value="T008_T007,ZOycOUdd68U,YqAQiQ63r0A,15,60">Monty Alexander - Love And Happiness
+                        (T007)
+                    </option>
+                <optgroup label="The Notorious B.i.g. - Respect (T181)" data-max-options="1">
+                    <option value="T181_T182,Gmk31TW0pXI,pMiSJ7i6B2c,162,17">Kc & The Sunshine Band - I Get Lifted
+                        (T182)
+                    </option>
+                <optgroup label="Will Smith - Miami (T020)" data-max-options="1">
+                    <option value="T020_T021,gbqXVlJggvo,fOaxEa5ONJw,12,25">The Whispers - And The Beat Goes On (T021)
+                    </option>
+                <optgroup label="Wu-tang Clan - C.r.e.a.m. (T024)" data-max-options="1">
+                    <option value="T024_T025,4yNQ7_7I5aE,gp9uZjPaB4w,245,2">The Charmels - As Long As I've Got You
+                        (T025)
+                    </option>
+                <optgroup label="Wu-tang Clan - Protect Ya Neck (T044)" data-max-options="1">
+                    <option value="T044_T045,rbOTn4KQCAE,wIhWa3YtyA0,27,107">The J.b.'s - The Grunt (T045)</option>
+                <optgroup label="Wu-tang Clan - Tearz (T028)" data-max-options="1">
+                    <option value="T028_T029,RrsJj_eUJS4,F7pqO7YKBt0,27,20">Wendy Rene - After Laughter (comes Tears)
+                        (T029)
+                    </option>
+                <optgroup label="Wu-tang Clan - Wu-tang Clan Ain't Nuthin Ta F' Wit (T163)" data-max-options="1">
+                    <option value="T163_T162,YKa5tyjLbi8,IOsp2sBtDqQ,15,85">Joe Tex - Papa Was Too (T162)</option>
+            </select>
+        </form>
+    </div>
+    <div id="headerContainer"></div>
+    <div id="queryContainer" class="video-container"
+         style="z-index: 1000; right:500px; bottom:500px; display: flex; justify-content: flex-end">
+        <h2 style="white-space: pre; margin-right: 36px;">Track: </h2>
+        <div id="queryVideoContainer"></div>
+    </div>
+    <div class="space"></div>
+    <div id="candidateContainer" class="video-container"
+         style="z-index: 1000; right:500px; bottom:500px; display: flex; justify-content: flex-end">
+        <h2 style="white-space: pre;">Sample: </h2>
+        <div id="candidateVideoContainer"></div>
+    </div>
+    <br>
+</div>
+<div class="space"></div>
+<div class="buttons">
+    <div class="action_btn">
+        <span>These timestamps are located <b>automatically</b> by our model</span><br>
+        <button style="font-size:20px" onclick="startYouTubeFrame(true, false)">Play track!</button>
+        <button style="font-size:20px" onclick="startYouTubeFrame(false, true)">Play sample!</button>
+    </div>
+    <br>
+</div>
+<script>updateView("T172_T173,JcIbgLQ11y8,c2-OIpeMooU")</script>
+<div>
+    <text style="font-family: Verdana">
+        <em>Note: sometimes music videos linked on YouTube contain additional intros, skits, openings etc. that are not
+            present in the recordings used to create the heatmaps, which may affect synchronization between the
+            heatmap and audio.<br><b>If in doubt, refer to the recordings available on the Spotify catalogue.</b>
+        </em>
+    </text>
+    <h2>Developed in 2024 by <a href="https://huwcheston.github.io">Huw Cheston</a>, research scientist intern @ MIQ,
+        Spotify</h2>
+</div>
+</body>
+</html>

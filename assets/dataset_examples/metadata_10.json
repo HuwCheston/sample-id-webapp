@@ -1,0 +1,49 @@
+{
+  "dataset": "fma",
+  "file": "fma.02632.wav",
+  "window_start": 2.5,
+  "window_stop": 10.0,
+  "anchor_crop_start": 2.6056598065461434,
+  "anchor_crop_end": 7.605659806546143,
+  "sample_crop_start": 3.046993892936527,
+  "sample_crop_end": 8.046993892936527,
+  "sample_instr": [
+    "bass+other",
+    "drums"
+  ],
+  "nonsample_instr": [
+    "vocals"
+  ],
+  "sample_fx": [
+    {
+      "name": "distortion",
+      "params": {
+        "drive_db": 10.399572995243814
+      }
+    },
+    {
+      "name": "mp3",
+      "params": {
+        "vbr_quality": 4.512930931785841
+      }
+    }
+  ],
+  "mix_fx": [
+    {
+      "name": "timewarpduplicate",
+      "params": {
+        "fps": 2.103957855564781,
+        "seed": 3910338161
+      }
+    }
+  ],
+  "database_metadata": {
+    "track_name": "Strictly Hiphop (Undertheunderground Mixx)",
+    "track_artist": "The Impossebulls",
+    "track_album": "Slave Education XE",
+    "track_date": null,
+    "track_license": "Attribution-NonCommercial-ShareAlike",
+    "track_publisher": null,
+    "track_url": "http://freemusicarchive.org/music/The_Impossebulls/Slave_Education_XE/03_-_Strictly_Hiphop_Undertheunderground_Mixx"
+  }
+}

@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <meta charset="UTF-8">
+    <title>Sample ID</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="css/cayman.css">
+    <script src="https://cdn.jsdelivr.net/npm/renderjson@1.4.0/renderjson.min.js"></script>
+    <script>
+        function loadJSON(jsSrc) {
+            let request = new XMLHttpRequest();
+            request.open("GET", jsSrc, false);
+            request.send(null)
+            return JSON.parse(request.responseText);
+        }
+
+        renderjson.set_sort_objects(true)
+    </script>
+</head>
+<body>
+
+<section class="page-header">
+    <h1 class="project-name">Sample ID</h1>
+    <h2 class="project-tagline">Code for the paper "Automatic Recognition of Samples in Audio via Multi-Loss Training
+        and an Artificial Dataset"</h2>
+    <a href="https://ghe.spotify.com/huwc/sample-id" class="btn">View on GitHub</a>
+    <a href="sample_explorer/sample_explorer.html" class="btn">Explore Model Predictions</a>
+</section>
+
+<section class="main-content">
+    <p>
+    <h1>Table of contents:</h1></p>
+    <ul>
+        <li><a href="#dataset-examples">Examples</a></li>
+        <li><a href="#reproducing">Reproducing our results</a>
+            <ul>
+                <li><a href="#acquiring-the-audio-tracks">Acquiring the Audio Tracks</a></li>
+                <li><a href="#preprocess-the-audio">Preprocess the Audio</a></li>
+                <li><a href="#acquire-and-preprocess-validation-audio">Acquire and Preprocess Validation Audio</a></li>
+                <li><a href="#training">Training</a></li>
+            </ul>
+        </li>
+        </li>
+        <li><a href="#citation">Citation</a></li>
+        <li><a href="#license">License</a></li>
+        <li><a href="#acknowledgements">Acknowledgements</a></li>
+    </ul>
+
+    <h2 id="dataset-examples">Examples</h2>
+    <span>All audio recordings shown here were initially released under non-commercial licenses</span>
+    <table id="table-examples">
+        <tr>
+            <th>Track</th>
+            <th>Sample</th>
+            <th>Metadata</th>
+        </tr>
+        <tr>
+            <td>
+                <audio controls>
+                    <source src="assets/dataset_examples/anchor_1.wav" type="audio/wav">
+                </audio>
+            </td>
+            <td>
+                <audio controls>
+                    <source src="assets/dataset_examples/positive_1.wav" type="audio/wav">
+                </audio>
+            </td>
+            <td>
+                <div id="json-1">
+                    <script>
+                        document.getElementById("json-1").appendChild(
+                            renderjson(loadJSON('assets/dataset_examples/metadata_1.json'))
+                        );
+                    </script>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <audio controls>
+                    <source src="assets/dataset_examples/anchor_2.wav" type="audio/wav">
+                </audio>
+            </td>
+            <td>
+                <audio controls>
+                    <source src="assets/dataset_examples/positive_2.wav" type="audio/wav">
+                </audio>
+            </td>
+            <td>
+                <div id="json-2">
+                    <script>
+                        document.getElementById("json-2").appendChild(
+                            renderjson(loadJSON('assets/dataset_examples/metadata_2.json'))
+                        );
+                    </script>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <audio controls>
+                    <source src="assets/dataset_examples/anchor_3.wav" type="audio/wav">
+                </audio>
+            </td>
+            <td>
+                <audio controls>
+                    <source src="assets/dataset_examples/positive_3.wav" type="audio/wav">
+                </audio>
+            </td>
+            <td>
+                <div id="json-3">
+                    <script>
+                        document.getElementById("json-3").appendChild(
+                            renderjson(loadJSON('assets/dataset_examples/metadata_3.json'))
+                        );
+                    </script>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <audio controls>
+                    <source src="assets/dataset_examples/anchor_4.wav" type="audio/wav">
+                </audio>
+            </td>
+            <td>
+                <audio controls>
+                    <source src="assets/dataset_examples/positive_4.wav" type="audio/wav">
+                </audio>
+            </td>
+            <td>
+                <div id="json-4">
+                    <script>
+                        document.getElementById("json-4").appendChild(
+                            renderjson(loadJSON('assets/dataset_examples/metadata_4.json'))
+                        );
+                    </script>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <audio controls>
+                    <source src="assets/dataset_examples/anchor_5.wav" type="audio/wav">
+                </audio>
+            </td>
+            <td>
+                <audio controls>
+                    <source src="assets/dataset_examples/positive_5.wav" type="audio/wav">
+                </audio>
+            <td>
+                <div id="json-5">
+                    <script>
+                        document.getElementById("json-5").appendChild(
+                            renderjson(loadJSON('assets/dataset_examples/metadata_5.json'))
+                        );
+                    </script>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <audio controls>
+                    <source src="assets/dataset_examples/anchor_6.wav" type="audio/wav">
+                </audio>
+            </td>
+            <td>
+                <audio controls>
+                    <source src="assets/dataset_examples/positive_6.wav" type="audio/wav">
+                </audio>
+            </td>
+            <td>
+                <div id="json-6">
+                    <script>
+                        document.getElementById("json-6").appendChild(
+                            renderjson(loadJSON('assets/dataset_examples/metadata_6.json'))
+                        );
+                    </script>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <audio controls>
+                    <source src="assets/dataset_examples/anchor_7.wav" type="audio/wav">
+                </audio>
+            </td>
+            <td>
+                <audio controls>
+                    <source src="assets/dataset_examples/positive_7.wav" type="audio/wav">
+                </audio>
+            </td>
+            <td>
+                <div id="json-7">
+                    <script>
+                        document.getElementById("json-7").appendChild(
+                            renderjson(loadJSON('assets/dataset_examples/metadata_7.json'))
+                        );
+                    </script>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <audio controls>
+                    <source src="assets/dataset_examples/anchor_8.wav" type="audio/wav">
+                </audio>
+            </td>
+            <td>
+                <audio controls>
+                    <source src="assets/dataset_examples/positive_8.wav" type="audio/wav">
+                </audio>
+            </td>
+            <td>
+                <div id="json-8">
+                    <script>
+                        document.getElementById("json-8").appendChild(
+                            renderjson(loadJSON('assets/dataset_examples/metadata_8.json'))
+                        );
+                    </script>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <audio controls>
+                    <source src="assets/dataset_examples/anchor_9.wav" type="audio/wav">
+                </audio>
+            </td>
+            <td>
+                <audio controls>
+                    <source src="assets/dataset_examples/positive_9.wav" type="audio/wav">
+                </audio>
+            <td>
+                <div id="json-9">
+                    <script>
+                        document.getElementById("json-9").appendChild(
+                            renderjson(loadJSON('assets/dataset_examples/metadata_9.json'))
+                        );
+                    </script>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <audio controls>
+                    <source src="assets/dataset_examples/anchor_10.wav" type="audio/wav">
+                </audio>
+            </td>
+            <td>
+                <audio controls>
+                    <source src="assets/dataset_examples/positive_10.wav" type="audio/wav">
+                </audio>
+            </td>
+            <td>
+                <div id="json-10">
+                    <script>
+                        document.getElementById("json-10").appendChild(
+                            renderjson(loadJSON('assets/dataset_examples/metadata_10.json'))
+                        );
+                    </script>
+                </div>
+            </td>
+        </tr>
+    </table>
+
+    <h2 id="reproducing">Reproducing</h2>
+    <p>First things first, clone the repository to a new directory, and install the requirements:</p>
+    <pre><code>git clone sample-id<br>cd sample-id<br>pip install -r requirements.txt    # using a venv is *strongly* recommended</code></pre>
+    <p>You&#39;ll also want to install <code>ffmpeg</code> (for preprocessing audio, and probably required for
+        dependencies) and <code>gsutil</code> (
+        recommended if hosting source material on a GCS bucket, rather than locally).</p>
+    <h3 id="acquiring-the-audio-tracks">Acquiring the Audio Tracks</h3>
+    <ol>
+        <li><p>Acquire the required audio files from the databases listed below.</p>
+            <ul>
+                <li><a href="https://os.unil.cloud.switch.ch/fma/fma_full.zip">Free Music Archive</a></li>
+                <li><a href="https://mtg.github.io/mtg-jamendo-dataset/#using-the-dataset">MTG-Jamendo</a></li>
+                <li><a href="https://zenodo.org/record/1117372">MusDB18</a></li>
+                <li><a href="https://mirg.city.ac.uk/codeapps/the-magnatagatune-dataset">Magnatagatune</a></li>
+            </ul>
+            <p>To see which files are needed, refer to <code>references/dataset.json</code>. The top level entries here
+                are database names:
+                each contains an iterable of <code>tracks</code>, where each item (unsurprisingly) relates to a single
+                track from the database.
+                Refer to the top level <code>comments</code> field for information on how the <code>source_id</code> for
+                each <code>track</code> relates to an entry
+                in the respective database.</p>
+        </li>
+        <li><p>As the format of filenames for each database is different, we use a unified filestructure consisting of
+            the database
+            name (or an abbreviation), followed by a zero-padded number. Each track should be renamed with the filename
+            given in
+            the <code>fname</code> field of <code>dataset.json</code>. So, for the
+            track <code>&quot;8/beth_quist-lucidity-11-the_house_that_jack_built-465-494.mp3&quot;</code> in the <code>magnatagatune</code>
+            database, we&#39;d rename
+            it to <code>magnatagatune.00000.wav</code>.</p>
+        </li>
+        <li><p>Ensure the file structure looks like this:</p>
+            <pre><code>└── root/
+    ├── data/
+    │   ├── fma/
+    │   │   └── mix/
+    │   │       ├── fma.<span class="hljs-number">00000</span><span class="hljs-selector-class">.wav</span>
+    │   │       └── fma.<span class="hljs-number">00001</span><span class="hljs-selector-class">.wav</span>
+    │   ├── mtg-jamendo/
+    │   │   └── mix/
+    │   │       └── mtg-jamendo.<span class="hljs-number">00000</span><span class="hljs-selector-class">.wav</span>
+    │   ├── musdb18/
+    │   │   └── ...
+    │   └── magnatagatune/
+    │       └── ...
+    ├── references/
+    │   └── dataset<span class="hljs-selector-class">.json</span>
+    └── README<span class="hljs-selector-class">.md</span> &lt;- you are here</code></pre>
+        </li>
+    </ol>
+    <h3 id="preprocess-the-audio">Preprocess the Audio</h3>
+    <ol>
+        <li><p>We extracted short 30-second excerpts from each track, the start and stop point for which can be found in
+            the <code>clip_start</code> and <code>clip_end</code> fields for each track in <code>database.json</code>.
+            You can use any method to do this, but we
+            used <code>ffmpeg</code>:</p>
+            <pre><code><span class="hljs-selector-tag">ffmpeg</span> <span class="hljs-selector-tag">-ss</span> <span
+                    class="hljs-selector-tag">HH</span><span class="hljs-selector-pseudo">:MM</span><span
+                    class="hljs-selector-pseudo">:SS</span> <span class="hljs-selector-tag">-to</span> <span
+                    class="hljs-selector-tag">HH</span><span class="hljs-selector-pseudo">:MM</span><span
+                    class="hljs-selector-pseudo">:SS</span> <span class="hljs-selector-tag">-i</span> <span
+                    class="hljs-selector-tag">PATH_TO_INPUT</span><span class="hljs-selector-class">.wav</span> <span
+                    class="hljs-selector-tag">-c</span> <span class="hljs-selector-tag">copy</span> <span
+                    class="hljs-selector-tag">PATH_TO_OUTPUT</span><span class="hljs-selector-class">.wav</span></code></pre>
+        </li>
+        <li><p>For source separation, we used the default model in <code>demucs v.4.0.1</code>. For each track, the
+            command was simply:</p>
+            <pre><code><span class="hljs-selector-tag">python3</span> <span
+                    class="hljs-selector-tag">demucs</span> <span class="hljs-selector-tag">PATH_TO_INPUT</span><span
+                    class="hljs-selector-class">.wav</span></code></pre>
+        </li>
+        <li><p>We combined the separated bass and other sources from <code>demucs</code>, again using
+            <code>ffmpeg</code>:</p>
+            <pre><code>ffmpeg -<span class="hljs-selector-tag">i</span> PATH_TO_BASS_SOURCE<span
+                    class="hljs-selector-class">.wav</span> -<span class="hljs-selector-tag">i</span> PATH_TO_OTHER_SOURCE<span
+                    class="hljs-selector-class">.wav</span> -filter_complex amix=inputs=<span
+                    class="hljs-number">2</span>:duration=longest PATH_TO_OUTPUT.wav</code></pre>
+        </li>
+        <li><p>Finally, we summed each source to mono and downsampled to 22050 Hz/16-bit:</p>
+            <pre><code>ffmpeg -<span class="hljs-selector-tag">i</span> PATH_TO_ONE_SOURCE<span
+                    class="hljs-selector-class">.wav</span> -ar <span class="hljs-number">22050</span> -ac <span
+                    class="hljs-number">1</span> -acodec pcm_s16le PATH_TO_OUTPUT_SOURCE.wav</code></pre>
+        </li>
+        <li><p>You now need to adjust the output filestructure to include these seperated tracks:</p>
+            <pre><code>└── root/
+    ├── data/
+    │   ├── fma/
+    │   │   ├── bass+other/
+    │   │   │   ├── fma.<span class="hljs-number">00000</span><span class="hljs-selector-class">.wav</span>
+    │   │   │   └── fma.<span class="hljs-number">00001</span><span class="hljs-selector-class">.wav</span>
+    │   │   ├── drums/
+    │   │   │   ├── fma.<span class="hljs-number">00000</span><span class="hljs-selector-class">.wav</span>
+    │   │   │   └── fma.<span class="hljs-number">00001</span><span class="hljs-selector-class">.wav</span>
+    │   │   └── vocals/
+    │   │       ├── fma.<span class="hljs-number">00000</span><span class="hljs-selector-class">.wav</span>
+    │   │       └── fma.<span class="hljs-number">00001</span><span class="hljs-selector-class">.wav</span>
+    │   ├── mtg-jamendo/
+    │   │   ├── bass+other/
+    │   │   │   └── ...
+    │   │   ├── drums/
+    │   │   │   └── ...
+    │   │   └── vocals/
+    │   │       └── ...
+    │   ├── musdb18/
+    │   │   └── ...
+    │   └── magnatagatune/
+    │       └── ...
+    ├── references/
+    │   └── dataset<span class="hljs-selector-class">.json</span>
+    └── README<span class="hljs-selector-class">.md</span> &lt;- you are here</code></pre>
+        </li>
+    </ol>
+    <h3 id="acquire-and-preprocess-validation-audio">Acquire and Preprocess Validation Audio</h3>
+    <ol>
+        <li><p>Our validation dataset consists of 76 queries, 68 candidates and 320 “noise” tracks of a similar genre.
+            All tracks
+            are commercial recordings by well-known artists and thus cannot be released publicly. Track titles and
+            artists are
+            given in <code>inference/jvb_uris.csv</code>.</p>
+        </li>
+        <li><p>After acquiring this audio, it must also be resampled to 22050 Hz/16-bit mono, with <code>ffmpeg</code>
+            (reuse the command
+            above).</p>
+        </li>
+        <li><p>These audio files must be placed inside a folder from the root directory:
+            <code>inference/audio/*.wav</code>. The filenames for
+            each audio file should follow the index in <code>inference/jvb_uris.csv</code>. Queries and candidates
+            should be prefaced
+            with <code>T</code> and noise with <code>X</code>:</p>
+            <pre><code>└── root/
+    ├── inference/
+    │   ├── audio/
+    │   │   ├── T001.wav    # Query: (<span class="hljs-string">"Time's Up"</span>, OC)
+    │   │   ├── T002.wav   # Candidate: (<span class="hljs-string">"A Day in the Life"</span>, Les Demerle)
+    │   │   ├── ...
+    │   │   ├── X001.wav    # Noise: (<span class="hljs-string">"Another Day"</span>, Jamie Lidell)
+    │   │   └── X002.wav   # Noise: (<span class="hljs-string">"The Mexican"</span>, Babe Ruth)
+    │   └── jvb_uris.csv
+    └── README.md &lt;- You are here</code></pre>
+        </li>
+    </ol>
+    <h3 id="training">Training</h3>
+    <ol>
+        <li><p>First, generate all the starting + stopping timestamps and sample instruments for the audio tracks in the
+            database by
+            running:</p>
+            <pre><code><span class="hljs-keyword">python</span> sample_id/get_data/create_dataset_csv.<span
+                    class="hljs-keyword">py</span></code></pre>
+            <p>This will dump <code>train_split.csv</code> and <code>test_split.csv</code> files inside the <code>references</code>
+                folder.</p>
+        </li>
+        <li><p>Next, we want to test that we can generate examples from the artificial dataset. To do so, run:</p>
+            <pre><code><span class="hljs-keyword">python</span> sample_id/dataloader.<span
+                    class="hljs-keyword">py</span></code></pre>
+            <p>This will create 1000 random training and test examples and dump them as individual folders
+                to <code>references/triplet_metadata</code>. Each folder will contain the anchor and positive audio as
+                <code>.wav</code> files, as well as
+                a <code>.json</code> file detailing the source material and any manipulation(s) applied. The script will
+                also list any missing
+                audio files that could not be found locally.</p>
+        </li>
+        <li><p>Now, we can start training by running:</p>
+            <pre><code>python sample_id/training_local<span class="hljs-selector-class">.py</span> --config <span
+                    class="hljs-string">"path/to/config.json"</span></code></pre>
+            <p>The <code>--config</code> flag should point towards a <code>.json</code> file in the <code>config</code>
+                directory that contains information on how
+                the experiment should be run. Here is an annotated example:</p>
+            <pre>
+<code>{
+  <span class="hljs-string">"run_name"</span>: <span class="hljs-string">"debug-local"</span>,    <span
+            class="hljs-comment"># The name of the experiment</span>
+  <span class="hljs-string">"encoder"</span>: <span class="hljs-string">"bytecover"</span>,    <span
+            class="hljs-comment"># The encoder: either vision-transformer or bytecover</span>
+  <span class="hljs-string">"share_encoder_weights"</span>: <span class="hljs-literal">false</span>,    <span
+            class="hljs-comment"># Whether or not to use a single encoder (default = False)</span>
+  <span class="hljs-string">"inference_uses_same_encoder"</span>: <span class="hljs-literal">true</span>,    <span
+            class="hljs-comment"># Whether or not to only use a single encoder at inference (default = True)</span>
+  <span class="hljs-string">"loss_func"</span>: <span class="hljs-string">"triplet&amp;cross-entropy"</span>,    <span
+            class="hljs-comment"># The loss function: either triplet, cross-entropy, or triplet&amp;cross-entropy (default)</span>
+  <span class="hljs-string">"cce_constant"</span>: <span class="hljs-number">0.3</span>,    <span class="hljs-comment"># The value to multiply the cross entropy loss by</span>
+  <span class="hljs-string">"triplet_constant"</span>: <span class="hljs-number">0.7</span>,    <span
+            class="hljs-comment"># The value to multiply the triplet loss by</span>
+  <span class="hljs-string">"split_batch_into"</span>: <span class="hljs-number">1</span>,    <span
+            class="hljs-comment"># Split a single batch into this many mini-batches</span>
+  <span class="hljs-string">"batch_size"</span>: <span class="hljs-number">128</span>,
+  <span class="hljs-string">"num_epochs"</span>: <span class="hljs-number">100</span>,
+  <span class="hljs-string">"learning_rate"</span>: <span class="hljs-number">1e-4</span>,
+  <span class="hljs-string">"learning_rate_plateau_epochs"</span>: <span class="hljs-number">40</span>,    <span
+            class="hljs-comment"># After this many epochs, reduce learning rate by learning_rate_decay</span>
+  <span class="hljs-string">"learning_rate_decay"</span>: <span class="hljs-number">0.2</span>,
+  <span class="hljs-string">"train_size"</span>: <span class="hljs-number">128</span>,
+  <span class="hljs-string">"test_size"</span>: <span class="hljs-number">128</span>,
+  <span class="hljs-string">"margin"</span>: <span class="hljs-number">0.3</span>,    <span class="hljs-comment"># The margin to use in setting the triplet loss</span>
+  <span class="hljs-string">"num_workers"</span>: <span class="hljs-number">0</span>,    <span class="hljs-comment"># Number of workers to use in multiprocessing: set to 0 to disable multiprocessing</span>
+  <span class="hljs-string">"debug"</span>: <span class="hljs-literal">false</span>    <span class="hljs-comment"># Setting to True will use silent audio of 5 seconds duration, rather than audio from the artificial dataset</span>
+}</code></pre>
+            <p>As training continues, loss and mRR will be logged for both the training and test datasets in the
+                console, as well as
+                validation metrics. A range of plots will be saved to <code>reports/{run_name}/{epoch_number}</code>
+                after each epoch, as well a
+                checkpoint to <code>checkpoints/{run_name}/{checkpoint_number}</code></p>
+        </li>
+        <li>To resume training from a given checkpoint, set <code>checkpoint_path</code> inside <code>config.json</code>
+            to the location of the <code>.pt</code>
+            file. Training will automatically resume from the next epoch after the checkpoint was made.
+        </li>
+    </ol>
+
+    <h2 id="citation">Citation</h2>
+    <span>
+        If you reference any aspect of this work, please cite it using the format below:
+        <pre><code>@misc{cheston2025automaticidentificationsampleshiphop,
+      title={Automatic Identification of Samples in Hip-Hop Music via Multi-Loss Training and an Artificial Dataset},
+      author={Huw Cheston and Jan Van Balen and Simon Durand},
+      year={2025},
+      eprint={2502.06364},
+      archivePrefix={arXiv},
+      primaryClass={cs.SD},
+      url={https://arxiv.org/abs/2502.06364},
+}</code></pre>
+    </span>
+
+    <h2 id="license">License</h2>
+    <span>Our <b>paper</b> is licensed under a <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC-BY-NC-SA-4.0 license</a></span>
+
+    <h2 id="acknowledgements">Acknowledgements</h2>
+    <span>This work was completed during an internship at Spotify's <a
+            href="https://research.atspotify.com/audio-intelligence/">Audio Intelligence</a> lab during Summer 2024.</span>
+
+    <footer class="site-footer">
+        <span class="site-footer-owner">© 2024 <a href="https://huwcheston.github.io/index.html">Huw Cheston</a></span>
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a>.</span>
+    </footer>
+
+</section>
+
+</body>
+</html>

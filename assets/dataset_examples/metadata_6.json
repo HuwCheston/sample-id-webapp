@@ -1,0 +1,42 @@
+{
+  "dataset": "fma",
+  "file": "fma.00239.wav",
+  "window_start": 15.0,
+  "window_stop": 22.5,
+  "anchor_crop_start": 16.699005213592972,
+  "anchor_crop_end": 21.699005213592972,
+  "sample_crop_start": 15.529229783339717,
+  "sample_crop_end": 20.529229783339716,
+  "sample_instr": [
+    "bass+other"
+  ],
+  "nonsample_instr": [
+    "vocals",
+    "drums"
+  ],
+  "sample_fx": [
+    {
+      "name": "reverb",
+      "params": {
+        "impulse_response_filename": "references/impulse_responses/echothief/HaleHolisticYogaStudio.wav",
+        "mix": 0.34626208202879505
+      }
+    },
+    {
+      "name": "highpassfilter",
+      "params": {
+        "freq": 770.5635813256176
+      }
+    }
+  ],
+  "mix_fx": [],
+  "database_metadata": {
+    "track_name": "Eraser feat. No Age",
+    "track_artist": "Wildabeast",
+    "track_album": "Mick Boogie &amp; Terry Urban Presents... Extra Levels",
+    "track_date": null,
+    "track_license": "Attribution-Noncommercial-Share Alike 3.0 United States",
+    "track_publisher": null,
+    "track_url": "http://freemusicarchive.org/music/Wildabeast/Extra_Levels_Presented_by_Mick_Boogie/Eraser_feat_No_Age"
+  }
+}
